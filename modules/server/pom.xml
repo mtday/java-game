@@ -13,6 +13,7 @@
     <packaging>pom</packaging>
 
     <modules>
+        <module>server-app</module>
         <module>server-db</module>
     </modules>
 </project>

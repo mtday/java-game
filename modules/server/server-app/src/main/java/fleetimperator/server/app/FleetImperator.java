@@ -1,6 +1,7 @@
 package fleetimperator.server.app;
 
-import fleetimperator.server.app.config.ConfigLoader;
+import fleetimperator.server.config.ConfigLoader;
+import fleetimperator.server.rest.Application;
 import org.eclipse.jetty.server.Server;
 import org.eclipse.jetty.servlet.ServletContextHandler;
 import org.eclipse.jetty.servlet.ServletHolder;
@@ -11,9 +12,6 @@ import java.util.Properties;
 import static org.eclipse.jetty.servlet.ServletContextHandler.NO_SESSIONS;
 
 public class FleetImperator {
-    /**
-     * Stands up a web server to process games.
-     */
     private FleetImperator() {
         Properties properties = ConfigLoader.load();
         String contextPath = properties.getProperty("server.context.path");
@@ -27,7 +25,7 @@ public class FleetImperator {
 
         ServletHolder servletHolder = handler.addServlet(ServletContainer.class, apiPath);
         servletHolder.setInitOrder(1);
-        servletHolder.setInitParameter("jersey.config.server.provider.packages", "fleetimperator");
+        servletHolder.setInitParameter("javax.ws.rs.Application", Application.class.getName());
 
         try {
             server.start();
@@ -39,11 +37,6 @@ public class FleetImperator {
         }
     }
 
-    /**
-     * The entry-point into this application.
-     *
-     * @param args the command-line parameters
-     */
     public static void main(String... args) {
         new FleetImperator();
     }

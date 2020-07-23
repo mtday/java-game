@@ -2,15 +2,15 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>fleet-imperator</groupId>
-    <artifactId>parent</artifactId>
+    <groupId>game</groupId>
+    <artifactId>game-parent</artifactId>
     <version>0.0.0-SNAPSHOT</version>
     <packaging>pom</packaging>
 
     <modules>
-        <module>modules/client</module>
-        <module>modules/common</module>
-        <module>modules/server</module>
+        <module>game-client</module>
+        <module>game-common</module>
+        <module>game-server</module>
     </modules>
 
     <properties>
@@ -34,33 +34,33 @@
         <dependencies>
             <!-- Project modules -->
             <dependency>
-                <groupId>fleet-imperator</groupId>
-                <artifactId>common</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>game-common</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>fleet-imperator</groupId>
-                <artifactId>client</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>game-client</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>fleet-imperator</groupId>
-                <artifactId>server-app</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>game-server-app</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>fleet-imperator</groupId>
-                <artifactId>server-config</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>game-server-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>fleet-imperator</groupId>
-                <artifactId>server-db</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>game-server-db</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
-                <groupId>fleet-imperator</groupId>
-                <artifactId>server-rest</artifactId>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>game-server-rest</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

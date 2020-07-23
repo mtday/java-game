@@ -29,6 +29,13 @@
         <dependency>
             <groupId>org.glassfish.hk2</groupId>
             <artifactId>hk2</artifactId>
+            <exclusions>
+                <!-- Use newer version provided by jersey-server -->
+                <exclusion>
+                    <groupId>jakarta.annotation</groupId>
+                    <artifactId>jakarta.annotation-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>
@@ -48,6 +55,18 @@
         <dependency>
             <groupId>com.fasterxml.jackson.jaxrs</groupId>
             <artifactId>jackson-jaxrs-json-provider</artifactId>
+            <exclusions>
+                <!-- Use newer version provided by jersey-server -->
+                <exclusion>
+                    <groupId>jakarta.activation</groupId>
+                    <artifactId>jakarta.activation-api</artifactId>
+                </exclusion>
+                <!-- Use newer version provided by jersey-server -->
+                <exclusion>
+                    <groupId>jakarta.xml.bind</groupId>
+                    <artifactId>jakarta.xml.bind-api</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <dependency>

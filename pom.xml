@@ -45,11 +45,6 @@
             </dependency>
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>game-server-app</artifactId>
-                <version>${project.version}</version>
-            </dependency>
-            <dependency>
-                <groupId>${project.groupId}</groupId>
                 <artifactId>game-server-config</artifactId>
                 <version>${project.version}</version>
             </dependency>
@@ -61,6 +56,11 @@
             <dependency>
                 <groupId>${project.groupId}</groupId>
                 <artifactId>game-server-rest</artifactId>
+                <version>${project.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>${project.groupId}</groupId>
+                <artifactId>game-server-webapp</artifactId>
                 <version>${project.version}</version>
             </dependency>
 

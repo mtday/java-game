@@ -12,10 +12,10 @@
     <packaging>pom</packaging>
 
     <modules>
-        <module>game-server-app</module>
         <module>game-server-config</module>
         <module>game-server-db</module>
         <module>game-server-rest</module>
+        <module>game-server-webapp</module>
     </modules>
 
     <build>

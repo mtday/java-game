@@ -9,11 +9,9 @@
     </parent>
 
     <artifactId>game-common</artifactId>
+    <packaging>pom</packaging>
 
-    <dependencies>
-        <dependency>
-            <groupId>com.fasterxml.jackson.core</groupId>
-            <artifactId>jackson-annotations</artifactId>
-        </dependency>
-    </dependencies>
+    <modules>
+        <module>game-common-model</module>
+    </modules>
 </project>

@@ -22,6 +22,7 @@
         <hk2.version>2.6.1</hk2.version>
         <hikari.version>3.4.5</hikari.version>
         <jackson.version>2.11.1</jackson.version>
+        <jakarta.version>2.1.6</jakarta.version>
         <jersey.version>2.31</jersey.version>
         <jetty.version>9.4.30.v20200611</jetty.version>
         <junit.version>4.13</junit.version>
@@ -35,7 +36,7 @@
             <!-- Project modules -->
             <dependency>
                 <groupId>${project.groupId}</groupId>
-                <artifactId>game-common</artifactId>
+                <artifactId>game-common-model</artifactId>
                 <version>${project.version}</version>
             </dependency>
             <dependency>
@@ -109,8 +110,18 @@
             <!-- HK2 used for dependency injection -->
             <dependency>
                 <groupId>org.glassfish.hk2</groupId>
-                <artifactId>hk2</artifactId>
+                <artifactId>hk2-api</artifactId>
                 <version>${hk2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.glassfish.hk2.external</groupId>
+                <artifactId>jakarta.inject</artifactId>
+                <version>${hk2.version}</version>
+            </dependency>
+            <dependency>
+                <groupId>jakarta.ws.rs</groupId>
+                <artifactId>jakarta.ws.rs-api</artifactId>
+                <version>${jakarta.version}</version>
             </dependency>
 
             <!-- Jackson used for JSON data processing. -->
@@ -192,6 +203,9 @@
                     <configuration>
                         <failOnWarning>true</failOnWarning>
                         <verbose>true</verbose>
+                        <ignoredUnusedDeclaredDependencies>
+                            <ignoredUnusedDeclaredDependency>ch.qos.logback:logback-classic</ignoredUnusedDeclaredDependency>
+                        </ignoredUnusedDeclaredDependencies>
                     </configuration>
                     <executions>
                         <execution>
@@ -199,7 +213,7 @@
                             <goals>
                                 <goal>analyze-only</goal>
                             </goals>
-                            <phase>validate</phase>
+                            <phase>prepare-package</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -226,6 +240,7 @@
                             <goals>
                                 <goal>enforce</goal>
                             </goals>
+                            <phase>validate</phase>
                         </execution>
                     </executions>
                 </plugin>
@@ -243,5 +258,17 @@
                 </plugin>
             </plugins>
         </pluginManagement>
+
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-dependency-plugin</artifactId>
+            </plugin>
+
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-enforcer-plugin</artifactId>
+            </plugin>
+        </plugins>
     </build>
 </project>

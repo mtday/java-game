@@ -16,5 +16,6 @@
         <module>game-server-db</module>
         <module>game-server-rest</module>
         <module>game-server-webapp</module>
+        <module>game-server-websocket</module>
     </modules>
 </project>

@@ -11,8 +11,8 @@ import java.util.Properties;
 
 import static org.eclipse.jetty.servlet.ServletContextHandler.NO_SESSIONS;
 
-public class GameServer {
-    private GameServer() {
+public class GameWebappServer {
+    private GameWebappServer() {
         Properties properties = ConfigLoader.load();
         String contextPath = properties.getProperty("server.context.path");
         String apiPath = properties.getProperty("server.api.path");
@@ -38,6 +38,6 @@ public class GameServer {
     }
 
     public static void main(String... args) {
-        new GameServer();
+        new GameWebappServer();
     }
 }

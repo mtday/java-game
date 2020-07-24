@@ -68,26 +68,28 @@ public class BaseStore<T> {
         }
     }
 
-    void update(RowSetter<T> rowSetter, String sql, Collection<T> objects) {
+    int update(RowSetter<T> rowSetter, String sql, Collection<T> objects) {
         if (objects.isEmpty()) {
-            return;
+            return 0;
         }
         try (Connection conn = getDataSource().getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
+            int updated = 0;
             for (T object : objects) {
                 rowSetter.set(ps, object);
-                ps.executeUpdate();
+                updated += ps.executeUpdate();
             }
+            return updated;
         } catch (SQLException sqlException) {
             throw new RuntimeException("Failed to perform database update", sqlException);
         }
     }
 
-    void update(String sql, Object... params) {
+    int update(String sql, Object... params) {
         try (Connection conn = getDataSource().getConnection();
              PreparedStatement ps = conn.prepareStatement(sql)) {
             populatePreparedStatement(ps, params);
-            ps.executeUpdate();
+            return ps.executeUpdate();
         } catch (SQLException sqlException) {
             throw new RuntimeException("Failed to perform database update", sqlException);
         }

@@ -41,17 +41,22 @@ public class JdbcGameStore extends BaseStore<Game> implements GameStore {
     }
 
     @Override
-    public void add(Collection<Game> games) {
-        update(INSERT_ROW_SETTER, "INSERT INTO games (id, turn) VALUES (?, ?)", games);
+    public int add(Collection<Game> games) {
+        return update(INSERT_ROW_SETTER, "INSERT INTO games (id, turn) VALUES (?, ?)", games);
     }
 
     @Override
-    public void update(Collection<Game> games) {
-        update(UPDATE_ROW_SETTER, "UPDATE games SET turn = ? WHERE id = ?", games);
+    public int update(Collection<Game> games) {
+        return update(UPDATE_ROW_SETTER, "UPDATE games SET turn = ? WHERE id = ?", games);
     }
 
     @Override
-    public void delete(Collection<String> ids) {
-        update("DELETE FROM games WHERE id = ANY(?)", ids);
+    public int delete(Collection<String> ids) {
+        return update("DELETE FROM games WHERE id = ANY(?)", ids);
+    }
+
+    @Override
+    public int truncate() {
+        return update("DELETE FROM games");
     }
 }

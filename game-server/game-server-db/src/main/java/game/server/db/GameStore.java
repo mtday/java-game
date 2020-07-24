@@ -13,18 +13,20 @@ public interface GameStore {
 
     List<Game> getAll();
 
-    void add(Collection<Game> games);
-    default void add(Game... games) {
-        add(asList(games));
+    int add(Collection<Game> games);
+    default int add(Game... games) {
+        return add(asList(games));
     }
 
-    void update(Collection<Game> games);
-    default void update(Game... games) {
-        update(asList(games));
+    int update(Collection<Game> games);
+    default int update(Game... games) {
+        return update(asList(games));
     }
 
-    void delete(Collection<String> ids);
-    default void delete(String... ids) {
-        delete(asList(ids));
+    int delete(Collection<String> ids);
+    default int delete(String... ids) {
+        return delete(asList(ids));
     }
+
+    int truncate();
 }

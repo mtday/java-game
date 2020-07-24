@@ -49,13 +49,12 @@ public final class Game {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Game game = (Game) o;
-        return turn == game.turn &&
-                Objects.equals(id, game.id);
+        return Objects.equals(id, game.id);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, turn);
+        return Objects.hash(id);
     }
 
     @Override
